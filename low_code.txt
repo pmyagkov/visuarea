@@ -1,0 +1,272 @@
+// Открыл файл example_1.psd
+// =======================================================
+var idOpn = charIDToTypeID( "Opn " );
+    var desc39 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+    desc39.putPath( idnull, new File( "/Users/p.myagkov/Downloads/_TZ/example_1.psd" ) );
+executeAction( idOpn, desc39, DialogModes.NO );
+
+// Создать слой
+// =======================================================
+var idMk = charIDToTypeID( "Mk  " );
+    var desc43 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref25 = new ActionReference();
+        var idLyr = charIDToTypeID( "Lyr " );
+        ref25.putClass( idLyr );
+    desc43.putReference( idnull, ref25 );
+executeAction( idMk, desc43, DialogModes.NO );
+
+// Передвинуть слой под нужный
+// ======================================================
+var idmove = charIDToTypeID( "move" );
+    var desc44 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref26 = new ActionReference();
+        var idLyr = charIDToTypeID( "Lyr " );
+        var idOrdn = charIDToTypeID( "Ordn" );
+        var idTrgt = charIDToTypeID( "Trgt" );
+        ref26.putEnumerated( idLyr, idOrdn, idTrgt );
+    desc44.putReference( idnull, ref26 );
+    var idT = charIDToTypeID( "T   " );
+        var ref27 = new ActionReference();
+        var idLyr = charIDToTypeID( "Lyr " );
+        ref27.putIndex( idLyr, 3 );
+    desc44.putReference( idT, ref27 );
+    var idAdjs = charIDToTypeID( "Adjs" );
+    desc44.putBoolean( idAdjs, false );
+    var idVrsn = charIDToTypeID( "Vrsn" );
+    desc44.putInteger( idVrsn, 5 );
+executeAction( idmove, desc44, DialogModes.NO );
+
+// Выбираем прямоугольник выделения
+// =======================================================
+var idsetd = charIDToTypeID( "setd" );
+    var desc45 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref28 = new ActionReference();
+        var idChnl = charIDToTypeID( "Chnl" );
+        var idfsel = charIDToTypeID( "fsel" );
+        ref28.putProperty( idChnl, idfsel );
+    desc45.putReference( idnull, ref28 );
+    var idT = charIDToTypeID( "T   " );
+        var desc46 = new ActionDescriptor();
+        var idTop = charIDToTypeID( "Top " );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc46.putUnitDouble( idTop, idPxl, 1002.000000 );
+        var idLeft = charIDToTypeID( "Left" );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc46.putUnitDouble( idLeft, idPxl, 175.000000 );
+        var idBtom = charIDToTypeID( "Btom" );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc46.putUnitDouble( idBtom, idPxl, 1028.000000 );
+        var idRght = charIDToTypeID( "Rght" );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc46.putUnitDouble( idRght, idPxl, 514.000000 );
+    var idRctn = charIDToTypeID( "Rctn" );
+    desc45.putObject( idT, idRctn, desc46 );
+executeAction( idsetd, desc45, DialogModes.NO );
+
+// Выбираем инструмент заливки
+// =======================================================
+var idslct = charIDToTypeID( "slct" );
+    var desc47 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref29 = new ActionReference();
+        var idbucketTool = stringIDToTypeID( "bucketTool" );
+        ref29.putClass( idbucketTool );
+    desc47.putReference( idnull, ref29 );
+    var iddontRecord = stringIDToTypeID( "dontRecord" );
+    desc47.putBoolean( iddontRecord, true );
+    var idforceNotify = stringIDToTypeID( "forceNotify" );
+    desc47.putBoolean( idforceNotify, true );
+executeAction( idslct, desc47, DialogModes.NO );
+
+// Заливаем
+// =======================================================
+var idFl = charIDToTypeID( "Fl  " ); // fill
+    var desc48 = new ActionDescriptor();
+
+    // выбираем точку внутри слоя
+    var idFrom = charIDToTypeID( "From" ); 
+        var desc49 = new ActionDescriptor();
+        var idHrzn = charIDToTypeID( "Hrzn" );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc49.putUnitDouble( idHrzn, idPxl, 351.000000 );
+        var idVrtc = charIDToTypeID( "Vrtc" );
+        var idPxl = charIDToTypeID( "#Pxl" );
+        desc49.putUnitDouble( idVrtc, idPxl, 1013.000000 );
+
+    // paint
+    var idPnt = charIDToTypeID( "Pnt " ); 
+    desc48.putObject( idFrom, idPnt, desc49 );
+    var idTlrn = charIDToTypeID( "Tlrn" );
+    desc48.putInteger( idTlrn, 32 );
+    var idAntA = charIDToTypeID( "AntA" );
+    desc48.putBoolean( idAntA, true );
+    var idUsng = charIDToTypeID( "Usng" );
+    var idFlCn = charIDToTypeID( "FlCn" );
+    var idFrgC = charIDToTypeID( "FrgC" );
+    desc48.putEnumerated( idUsng, idFlCn, idFrgC );
+executeAction( idFl, desc48, DialogModes.NO );
+
+// Выбираем полигональное лассо
+// =======================================================
+var idslct = charIDToTypeID( "slct" );
+    var desc50 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref30 = new ActionReference();
+        var idpolySelTool = stringIDToTypeID( "polySelTool" );
+        ref30.putClass( idpolySelTool );
+    desc50.putReference( idnull, ref30 );
+    var iddontRecord = stringIDToTypeID( "dontRecord" );
+    desc50.putBoolean( iddontRecord, true );
+    var idforceNotify = stringIDToTypeID( "forceNotify" );
+    desc50.putBoolean( idforceNotify, true );
+executeAction( idslct, desc50, DialogModes.NO );
+
+// Выбираем точки
+// =======================================================
+// set
+var idsetd = charIDToTypeID( "setd" );
+    var desc51 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref31 = new ActionReference();
+        var idChnl = charIDToTypeID( "Chnl" );
+        var idfsel = charIDToTypeID( "fsel" );
+        ref31.putProperty( idChnl, idfsel );
+    desc51.putReference( idnull, ref31 );
+    var idT = charIDToTypeID( "T   " );
+        var desc52 = new ActionDescriptor();
+        var idPts = charIDToTypeID( "Pts " );
+            var list10 = new ActionList();
+                var desc53 = new ActionDescriptor();
+                var idHrzn = charIDToTypeID( "Hrzn" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc53.putUnitDouble( idHrzn, idPxl, 175.967328 );
+                var idVrtc = charIDToTypeID( "Vrtc" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc53.putUnitDouble( idVrtc, idPxl, 1037.406250 );
+                
+            var idPnt = charIDToTypeID( "Pnt " );
+            list10.putObject( idPnt, desc53 );
+                var desc54 = new ActionDescriptor();
+                var idHrzn = charIDToTypeID( "Hrzn" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc54.putUnitDouble( idHrzn, idPxl, 198.812500 );
+                var idVrtc = charIDToTypeID( "Vrtc" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc54.putUnitDouble( idVrtc, idPxl, 1013.405261 );
+            var idPnt = charIDToTypeID( "Pnt " );
+            list10.putObject( idPnt, desc54 );
+                var desc55 = new ActionDescriptor();
+                var idHrzn = charIDToTypeID( "Hrzn" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc55.putUnitDouble( idHrzn, idPxl, 157.484078 );
+                var idVrtc = charIDToTypeID( "Vrtc" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc55.putUnitDouble( idVrtc, idPxl, 988.726172 );
+            var idPnt = charIDToTypeID( "Pnt " );
+            list10.putObject( idPnt, desc55 );
+                var desc56 = new ActionDescriptor();
+                var idHrzn = charIDToTypeID( "Hrzn" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc56.putUnitDouble( idHrzn, idPxl, 156.322075 );
+                var idVrtc = charIDToTypeID( "Vrtc" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc56.putUnitDouble( idVrtc, idPxl, 1020.034230 );
+                
+            var idPnt = charIDToTypeID( "Pnt " );
+            list10.putObject( idPnt, desc56 );
+                var desc57 = new ActionDescriptor();
+                var idHrzn = charIDToTypeID( "Hrzn" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc57.putUnitDouble( idHrzn, idPxl, 173.399605 );
+                var idVrtc = charIDToTypeID( "Vrtc" );
+                var idPxl = charIDToTypeID( "#Pxl" );
+                desc57.putUnitDouble( idVrtc, idPxl, 1037.406250 );
+            var idPnt = charIDToTypeID( "Pnt " );
+            list10.putObject( idPnt, desc57 );
+        desc52.putList( idPts, list10 );
+    var idPlgn = charIDToTypeID( "Plgn" );
+    desc51.putObject( idT, idPlgn, desc52 );
+    var idAntA = charIDToTypeID( "AntA" );
+    desc51.putBoolean( idAntA, true );
+executeAction( idsetd, desc51, DialogModes.NO );
+
+// Удаление области
+// =======================================================
+var idDlt = charIDToTypeID( "Dlt " );
+executeAction( idDlt, undefined, DialogModes.NO );
+
+// Прозрачность слоя = 50
+// =======================================================
+var idsetd = charIDToTypeID( "setd" );
+    var desc71 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref34 = new ActionReference();
+        var idLyr = charIDToTypeID( "Lyr " );
+        var idOrdn = charIDToTypeID( "Ordn" );
+        var idTrgt = charIDToTypeID( "Trgt" );
+        ref34.putEnumerated( idLyr, idOrdn, idTrgt );
+    desc71.putReference( idnull, ref34 );
+    var idT = charIDToTypeID( "T   " );
+        var desc72 = new ActionDescriptor();
+        var idOpct = charIDToTypeID( "Opct" );
+        var idPrc = charIDToTypeID( "#Prc" );
+        desc72.putUnitDouble( idOpct, idPrc, 50.000000 );
+    var idLyr = charIDToTypeID( "Lyr " );
+    desc71.putObject( idT, idLyr, desc72 );
+executeAction( idsetd, desc71, DialogModes.NO );
+
+// снятие выделения
+// =======================================================
+var idsetd = charIDToTypeID( "setd" );
+    var desc76 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref37 = new ActionReference();
+        var idChnl = charIDToTypeID( "Chnl" );
+        var idfsel = charIDToTypeID( "fsel" );
+        ref37.putProperty( idChnl, idfsel );
+    desc76.putReference( idnull, ref37 );
+    var idT = charIDToTypeID( "T   " );
+    var idOrdn = charIDToTypeID( "Ordn" );
+    var idNone = charIDToTypeID( "None" );
+    desc76.putEnumerated( idT, idOrdn, idNone );
+executeAction( idsetd, desc76, DialogModes.NO );
+
+// размытие по гауссу
+// =======================================================
+var idGsnB = charIDToTypeID( "GsnB" );
+    var desc77 = new ActionDescriptor();
+    var idRds = charIDToTypeID( "Rds " );
+    var idPxl = charIDToTypeID( "#Pxl" );
+    desc77.putUnitDouble( idRds, idPxl, 9.000000 );
+executeAction( idGsnB, desc77, DialogModes.NO );
+
+
+/**
+
+Еще нужно обрезать правый верхний и нихний края слоя с картиной
+
+**/
+
+// Выбрать слой Layer 2
+// =======================================================
+var idslct = charIDToTypeID( "slct" );
+    var desc144 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+        var ref72 = new ActionReference();
+        var idLyr = charIDToTypeID( "Lyr " );
+        ref72.putName( idLyr, "Layer 2" );
+    desc144.putReference( idnull, ref72 );
+    var idMkVs = charIDToTypeID( "MkVs" );
+    desc144.putBoolean( idMkVs, false );
+executeAction( idslct, desc144, DialogModes.NO );
+
+// Сделать из него копию
+// =======================================================
+var idCpTL = charIDToTypeID( "CpTL" );
+executeAction( idCpTL, undefined, DialogModes.NO );
+
+
